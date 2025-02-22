@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="off_black">#272727</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="coloreTransparent">#00000000</color>
+    <color name="colorPrimary">#165118</color>
+    <color name="colorPrimaryDark">#0C7481</color>
+    <color name="colorBackground">@color/material_dynamic_neutral80</color>
+
+    <color name="colorAccent">#EC0F5A</color>
+
+    <color name="off_white">#FAF9F6</color>
+    <color name="off_green">#EEF9F6</color>
+
+    <color name="coloreWhite">#FFFFFF</color>
+    <color name="blue">#2196F3</color>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">জব প্রস্তুতি</string>
+    <string name="model_test">মডেল টেস্ট</string>
+    <string name="practice">অনুশীলন</string>
+    <string name="question_bank">প্রশ্ন ব্যাংক</string>
+    <string name="primary">প্রাইমারি প্রস্তুতি</string>
+    <string name="p">P</string>
+    <string name="b">B</string>
+</resources>
