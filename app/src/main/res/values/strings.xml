@@ -6,4 +6,6 @@
     <string name="primary">প্রাইমারি প্রস্তুতি</string>
     <string name="p">P</string>
     <string name="b">B</string>
+
+    <string name="image_description">image_description</string>
 </resources>

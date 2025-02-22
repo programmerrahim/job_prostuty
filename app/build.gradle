@@ -55,9 +55,7 @@ dependencies {
 
     implementation 'androidx.browser:browser:1.8.0'
 
-    //pdfview
 
-    implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.3'
 
 
 
@@ -65,7 +63,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging'
 
     implementation 'com.google.firebase:firebase-firestore:25.1.1'
-//country picker
-    implementation 'com.hbb20:ccp:2.5.2'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+
 
 }
