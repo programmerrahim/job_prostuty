@@ -20,6 +20,9 @@
             android:name="com.ruksana.DetailsActivity"
             android:exported="false" />
         <activity
+            android:name="com.ruksana.view.AllSubjectActivity"
+            android:exported="false" />
+        <activity
             android:name="com.ruksana.view.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -6,7 +6,7 @@
 
     <color name="coloreTransparent">#00000000</color>
     <color name="colorPrimary">#165118</color>
-    <color name="colorPrimaryDark">#0C7481</color>
+    <color name="colorPrimaryDark">#2298A6</color>
     <color name="colorBackground">@color/material_dynamic_neutral80</color>
 
     <color name="colorAccent">#EC0F5A</color>
