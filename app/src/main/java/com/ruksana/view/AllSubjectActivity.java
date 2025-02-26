@@ -65,6 +65,7 @@ public class AllSubjectActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(category);
 
 
         recview = findViewById(R.id.recview);
