@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
         // Handle Navigation Item Clicks
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.nav_home) {
+            if (id == R.id.nav_privacy_policy_id) {
                 // Handle item 1 click
                 Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_profile) {
+            } else if (id == R.id.nav_terms_and_conditions_id) {
                 // Handle item 2 click
                 Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
             }
