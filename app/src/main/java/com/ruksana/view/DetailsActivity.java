@@ -1,9 +1,10 @@
-package com.ruksana;
+package com.ruksana.view;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +27,7 @@ public class DetailsActivity extends AppCompatActivity {
     List<Question> questionList;
     FirebaseFirestore db;
 
-   String category;
+   String category,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,23 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
 
+        //int action bar
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+
+
         // Get data from Intent
         category = getIntent().getStringExtra("categoryForDetails");
+        name = getIntent().getStringExtra("name");
+
+
+
+
+        //add back button
+        assert actionBar != null;
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(name);
 
         Toast.makeText(this, category, Toast.LENGTH_SHORT).show();
 
@@ -69,5 +85,11 @@ public class DetailsActivity extends AppCompatActivity {
             // Handle error
             Log.e("FirestoreError", "Error loading questions: " + e.getMessage());
         });
+    }
+    //Back Override method
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();//go previous activity, when back button of  actionbar clicked
+        return super.onSupportNavigateUp();
     }
 }

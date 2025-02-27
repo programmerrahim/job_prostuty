@@ -110,7 +110,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
     }
 
     private void resetButtonColors(QuestionViewHolder holder) {
-        int defaultColor = ContextCompat.getColor(context, android.R.color.holo_blue_dark);
+        int defaultColor = ContextCompat.getColor(context, android.R.color.system_on_primary_light);
         holder.option1Button.setBackgroundColor(defaultColor);
         holder.option2Button.setBackgroundColor(defaultColor);
         holder.option3Button.setBackgroundColor(defaultColor);

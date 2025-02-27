@@ -8,4 +8,8 @@
     <string name="b">B</string>
 
     <string name="image_description">image_description</string>
+    <string name="exit_icon_description">exit_icon_description</string>
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>

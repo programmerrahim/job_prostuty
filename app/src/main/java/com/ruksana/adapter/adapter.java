@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ruksana.DetailsActivity;
+import com.ruksana.view.DetailsActivity;
 import com.ruksana.jobprostuti.R;
 import com.ruksana.model.Model_Firestore_Database;
 
@@ -45,6 +45,7 @@ public class adapter extends RecyclerView.Adapter<adapter.myviewholder> {
                 // Create an intent to start the PostActivity
                 Intent intent = new Intent(v.getContext(), DetailsActivity.class);
                 intent.putExtra("categoryForDetails", datalist.get(position).getCategoryForDetails());
+                intent.putExtra("name", datalist.get(position).getName());
                 v.getContext().startActivity(intent);
 
             }

@@ -16,4 +16,9 @@
 
     <color name="coloreWhite">#FFFFFF</color>
     <color name="blue">#2196F3</color>
+    <color name="splash_background">@color/off_green</color>
+
+
+    <color name="gray">#808080</color>
+
 </resources>
