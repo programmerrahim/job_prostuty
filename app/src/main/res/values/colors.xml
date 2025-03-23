@@ -11,7 +11,7 @@
 
     <color name="colorAccent">#EC0F5A</color>
 
-    <color name="off_white">#FAF9F6</color>
+    <color name="off_white">#FCFCFC</color>
     <color name="off_green">#EEF9F6</color>
 
     <color name="coloreWhite">#FFFFFF</color>
@@ -20,5 +20,13 @@
 
 
     <color name="gray">#808080</color>
+
+    <!-- Additional colors -->
+    <color name="grey_700">#616161</color>
+
+    <color name="light_green">#EEF9F6</color> <!-- Light green for correct -->
+    <color name="light_red">#FFF5F8</color>   <!-- Light red for incorrect -->
+
+
 
 </resources>

@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">জব প্রস্তুতি</string>
+    <string name="splash_slogan">প্রতিদিন নতুন নতুন তথ্য অ্যাপ এ যোগ করা হয়</string>
+
+    <!--Admob test id-->
+    <string name="admob_application_id">ca-app-pub-3940256099942544~3347511713</string>
+
+
     <string name="model_test">মডেল টেস্ট</string>
     <string name="practice">অনুশীলন</string>
     <string name="question_bank">প্রশ্ন ব্যাংক</string>
@@ -12,4 +18,5 @@
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="vertical_title">Vertical Title</string>
 </resources>

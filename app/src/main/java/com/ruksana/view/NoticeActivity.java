@@ -1,8 +1,7 @@
 package com.ruksana.view;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,27 +15,26 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.ruksana.adapter.adapter;
+import com.ruksana.adapter.adapterForNotice;
 import com.ruksana.jobprostuti.R;
-import com.ruksana.model.Model_Firestore_Database;
+import com.ruksana.model.modelForNotice;
 
 import java.util.ArrayList;
 
-public class AllSubjectActivity extends AppCompatActivity {
+public class NoticeActivity extends AppCompatActivity {
+
+    private ProgressDialog progressDialog;
 
     private SwipeRefreshLayout swipeRefreshLayout;
 
     RecyclerView recview;
 
-    ArrayList<Model_Firestore_Database> datalist;
+    ArrayList<modelForNotice> datalist;
     FirebaseFirestore db;
 
-    adapter adapter;
+    com.ruksana.adapter.adapterForNotice madapter;
 
-    String name;
-    String category;
-
-    private ProgressBar loadingIndicator; // Added loading indicator
+    String button_name;
 
 
     @Override
@@ -47,12 +45,10 @@ public class AllSubjectActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
 
-        // Initialize Loading Indicator
-        loadingIndicator = findViewById(R.id.loading_indicator);
 
-
-        name = getIntent().getStringExtra("name");
-        category = getIntent().getStringExtra("CATEGORY");
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading please wait...");
+        progressDialog.show();
 
 
         //int action bar
@@ -60,24 +56,29 @@ public class AllSubjectActivity extends AppCompatActivity {
         assert actionBar != null;
 
 
+
         //add back button
         assert actionBar != null;
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle(name);
+        actionBar.setTitle("Notifications");
 
 
         recview = findViewById(R.id.recview);
-        recview.setLayoutManager(new LinearLayoutManager(AllSubjectActivity.this));
+        recview.setLayoutManager(new LinearLayoutManager(NoticeActivity.this));
 
         db = FirebaseFirestore.getInstance();
 
         datalist = new ArrayList<>();
 
-        adapter = new adapter(datalist);
+//        madapter = new adapter(datalist);
+
+//        madapter = new adapterForNotice(datalist);
+
+        madapter = new adapterForNotice(datalist);
 
 
-        recview.setAdapter(adapter);
+        recview.setAdapter(madapter);
 
 
         datalist.clear();
@@ -92,30 +93,25 @@ public class AllSubjectActivity extends AppCompatActivity {
 
             swipeRefreshLayout.setRefreshing(false);
         });
+
     }
 
-    //onCreate End
-
-
     private void loadData() {
-        // Show loading indicator while fetching course data
-        loadingIndicator.setVisibility(View.VISIBLE);
         db = FirebaseFirestore.getInstance();
-        db.collection("items")
-                .orderBy("category", Query.Direction.ASCENDING)
-                .whereEqualTo("category", category)
+        db.collection("notice")
+                .orderBy("category", Query.Direction.DESCENDING)
+                .whereEqualTo("category", "notice")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         ArrayList<DocumentSnapshot> list = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
                         for (DocumentSnapshot d : list) {
-                            Model_Firestore_Database obj = d.toObject(Model_Firestore_Database.class);
+                            modelForNotice obj = d.toObject(modelForNotice.class);
                             datalist.add(obj);
                         }
-                        adapter.notifyDataSetChanged();
-                        // Hide loading indicator when data is loaded
-                        loadingIndicator.setVisibility(View.GONE);
+                        madapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 });
     }

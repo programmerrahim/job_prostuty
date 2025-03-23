@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+ >
 
-    <ImageView
-        android:id="@+id/ivHorizontalImage"
-        android:background="@drawable/horizontal_image_background"
-        android:layout_width="256dp"
-        android:layout_height="144dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/image_description" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="224dp"
+        android:layout_height="126dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        tools:ignore="ExtraText">
+        android:layout_gravity="center"
+        android:foreground="?attr/selectableItemBackground"
+
+        <ImageView
+            android:id="@+id/ivHorizontalImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:background="@drawable/horizontal_image_background"
+            android:contentDescription="@string/image_description"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop" />
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

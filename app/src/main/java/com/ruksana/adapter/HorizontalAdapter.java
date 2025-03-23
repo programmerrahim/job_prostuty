@@ -39,6 +39,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Ho
     public void onBindViewHolder(@NonNull HorizontalViewHolder holder, int position) {
         HorizontalItem horizontalItem = horizontalItemList.get(position);
 
+
         // Load image using Glide
         Glide.with(holder.itemView.getContext())
                 .load(horizontalItem.getImageUrl())
@@ -49,7 +50,8 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.Ho
             // Start DetailActivity and pass data
             Intent intent = new Intent(context, AllSubjectActivity.class);
             intent.putExtra("imageUrl", horizontalItem.getImageUrl());
-            intent.putExtra("CATEGORY", horizontalItem.getText()); // it is come from realtime and going into firebase data
+            intent.putExtra("CATEGORY", horizontalItem.getCategory()); // it is come from realtime and going into firebase data
+            intent.putExtra("name", horizontalItem.getName()); // it is come from realtime and going into firebase data
             context.startActivity(intent);
         });
     }

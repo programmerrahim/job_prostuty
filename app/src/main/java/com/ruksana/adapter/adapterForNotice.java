@@ -11,18 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ruksana.view.DetailsActivity;
 import com.ruksana.jobprostuti.R;
-import com.ruksana.model.Model_Firestore_Database;
-
+import com.ruksana.model.modelForNotice;
+import com.ruksana.view.NoticeDetailsActivity;
 
 import java.util.ArrayList;
 
 
-public class adapter extends RecyclerView.Adapter<adapter.myviewholder> {
-    ArrayList<Model_Firestore_Database> datalist;
+public class adapterForNotice extends RecyclerView.Adapter<adapterForNotice.myviewholder> {
+    ArrayList<modelForNotice> datalist;
 
-    public adapter(ArrayList<Model_Firestore_Database> datalist) {
+    public adapterForNotice(ArrayList<modelForNotice> datalist) {
         this.datalist = datalist;
     }
 
@@ -43,10 +42,9 @@ public class adapter extends RecyclerView.Adapter<adapter.myviewholder> {
             public void onClick(View v) {
 
                 // Create an intent to start the PostActivity
-                Intent intent = new Intent(v.getContext(), DetailsActivity.class);
-                intent.putExtra("categoryQ", datalist.get(position).getCategoryQ());
-                intent.putExtra("name", datalist.get(position).getName());
+                Intent intent = new Intent(v.getContext(), NoticeDetailsActivity.class);
                 intent.putExtra("data", datalist.get(position).getData());
+                intent.putExtra("name", datalist.get(position).getName());
                 v.getContext().startActivity(intent);
 
             }

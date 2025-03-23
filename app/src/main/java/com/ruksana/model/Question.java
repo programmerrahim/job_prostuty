@@ -1,82 +1,60 @@
 package com.ruksana.model;
 
 public class Question {
-    private String question;
-    private String option1;
-    private String option2;
-    private String option3;
-    private String option4;
-    private String explanation;
-    private int correctOption;
+    private String question, optionA, optionB, optionC, optionD, correctAnswer, explanation;
+    private String selectedAnswer; // To store the user's selected answer
+    private boolean hasBeenAnswered; // To track if the question has been answered
 
-    // Empty constructor for Firestore
-    public Question() {}
-
-    public Question(String question, String option1, String option2, String option3, String option4, int correctOption, String explanation) {
+    public Question(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer, String explanation) {
         this.question = question;
-        this.option1 = option1;
-        this.option2 = option2;
-        this.option3 = option3;
-        this.option4 = option4;
-        this.correctOption = correctOption;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.correctAnswer = correctAnswer;
         this.explanation = explanation;
+        this.selectedAnswer = null;
+        this.hasBeenAnswered = false;
     }
 
-    // Getters
     public String getQuestion() {
         return question;
     }
 
-    public String getOption1() {
-        return option1;
+    public String getOptionA() {
+        return optionA;
     }
 
-    public String getOption2() {
-        return option2;
+    public String getOptionB() {
+        return optionB;
     }
 
-    public String getOption3() {
-        return option3;
+    public String getOptionC() {
+        return optionC;
     }
 
-    public String getOption4() {
-        return option4;
+    public String getOptionD() {
+        return optionD;
     }
 
-    public int getCorrectOption() {
-        return correctOption;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
     public String getExplanation() {
         return explanation;
     }
 
-    // Setters
-    public void setQuestion(String question) {
-        this.question = question;
+    public String getSelectedAnswer() {
+        return selectedAnswer;
     }
 
-    public void setOption1(String option1) {
-        this.option1 = option1;
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
+        this.hasBeenAnswered = true;
     }
 
-    public void setOption2(String option2) {
-        this.option2 = option2;
-    }
-
-    public void setOption3(String option3) {
-        this.option3 = option3;
-    }
-
-    public void setOption4(String option4) {
-        this.option4 = option4;
-    }
-
-    public void setCorrectOption(int correctOption) {
-        this.correctOption = correctOption;
-    }
-
-    public void setExplanation(String explanation) {
-        this.explanation = explanation;
+    public boolean hasBeenAnswered() {
+        return hasBeenAnswered;
     }
 }

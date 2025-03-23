@@ -1,7 +1,5 @@
 package com.ruksana.model;
 
-import com.ruksana.model.HorizontalItem;
-
 import java.util.List;
 
 public class VerticalItem {

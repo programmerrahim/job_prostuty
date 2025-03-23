@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/off_green"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:autoLink="all"
+        android:fontFamily="@font/poppins_regular"
+       android:textSize="16sp"
+        android:layout_margin="@dimen/section_margin"
+        android:padding="@dimen/section_margin"
+        android:textColorLink="@color/blue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</androidx.core.widget.NestedScrollView>

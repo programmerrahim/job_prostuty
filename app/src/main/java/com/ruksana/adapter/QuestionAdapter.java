@@ -1,14 +1,13 @@
 package com.ruksana.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ruksana.jobprostuti.R;
@@ -18,52 +17,23 @@ import java.util.List;
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder> {
 
-    private final Context context;
-    private final List<Question> questionList;
+    private List<Question> questionList;
 
-    public QuestionAdapter(Context context, List<Question> questionList) {
-        this.context = context;
+    public QuestionAdapter(List<Question> questionList) {
         this.questionList = questionList;
     }
 
     @NonNull
     @Override
     public QuestionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_question, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_question, parent, false);
         return new QuestionViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull QuestionViewHolder holder, int position) {
         Question question = questionList.get(position);
-
-        holder.questionText.setText(question.getQuestion());
-        holder.option1Button.setText(question.getOption1());
-        holder.option2Button.setText(question.getOption2());
-        holder.option3Button.setText(question.getOption3());
-        holder.option4Button.setText(question.getOption4());
-
-        // Reset views and button colors for reuse
-        holder.resultText.setVisibility(View.GONE);
-        holder.explanationText.setVisibility(View.GONE);
-        resetButtonColors(holder);
-
-        // Set tags to identify each option
-        holder.option1Button.setTag(1);
-        holder.option2Button.setTag(2);
-        holder.option3Button.setTag(3);
-        holder.option4Button.setTag(4);
-
-        // Handle option click
-        View.OnClickListener optionClickListener = v -> {
-            int selectedOption = (int) v.getTag();
-            handleOptionSelection(holder, selectedOption, question.getCorrectOption(), question.getExplanation());
-        };
-
-        holder.option1Button.setOnClickListener(optionClickListener);
-        holder.option2Button.setOnClickListener(optionClickListener);
-        holder.option3Button.setOnClickListener(optionClickListener);
-        holder.option4Button.setOnClickListener(optionClickListener);
+        holder.bind(question, position);
     }
 
     @Override
@@ -71,65 +41,132 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         return questionList.size();
     }
 
-    private void handleOptionSelection(QuestionViewHolder holder, int selectedOption, int correctOption, String explanation) {
-        resetButtonColors(holder); // Reset colors to default before showing result
+    public class QuestionViewHolder extends RecyclerView.ViewHolder {
 
-        Button selectedButton = getButtonByOption(holder, selectedOption);
-        Button correctButton = getButtonByOption(holder, correctOption);
-
-        if (selectedOption == correctOption) {
-            selectedButton.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_green_dark));
-            holder.resultText.setText("Correct!");
-            holder.resultText.setTextColor(ContextCompat.getColor(context, android.R.color.holo_green_dark));
-        } else {
-            assert selectedButton != null;
-            selectedButton.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_dark));
-            correctButton.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_green_dark));
-            holder.resultText.setText("Wrong!");
-            holder.resultText.setTextColor(ContextCompat.getColor(context, android.R.color.holo_red_dark));
-        }
-
-        holder.resultText.setVisibility(View.VISIBLE);
-        holder.explanationText.setText("Explanation: " + explanation);
-        holder.explanationText.setVisibility(View.VISIBLE);
-    }
-
-    private Button getButtonByOption(QuestionViewHolder holder, int option) {
-        switch (option) {
-            case 1:
-                return holder.option1Button;
-            case 2:
-                return holder.option2Button;
-            case 3:
-                return holder.option3Button;
-            case 4:
-                return holder.option4Button;
-            default:
-                return null;
-        }
-    }
-
-    private void resetButtonColors(QuestionViewHolder holder) {
-        int defaultColor = ContextCompat.getColor(context, android.R.color.system_on_primary_light);
-        holder.option1Button.setBackgroundColor(defaultColor);
-        holder.option2Button.setBackgroundColor(defaultColor);
-        holder.option3Button.setBackgroundColor(defaultColor);
-        holder.option4Button.setBackgroundColor(defaultColor);
-    }
-
-    static class QuestionViewHolder extends RecyclerView.ViewHolder {
-        TextView questionText, resultText, explanationText;
-        Button option1Button, option2Button, option3Button, option4Button;
+        private TextView questionText, feedbackText, explanationText;
+        private RadioGroup radioGroup;
+        private RadioButton optionA, optionB, optionC, optionD;
+        private boolean isAnswerSelected = false;
 
         public QuestionViewHolder(@NonNull View itemView) {
             super(itemView);
             questionText = itemView.findViewById(R.id.questionText);
-            option1Button = itemView.findViewById(R.id.option1Button);
-            option2Button = itemView.findViewById(R.id.option2Button);
-            option3Button = itemView.findViewById(R.id.option3Button);
-            option4Button = itemView.findViewById(R.id.option4Button);
-            resultText = itemView.findViewById(R.id.resultText);
+            radioGroup = itemView.findViewById(R.id.radioGroup);
+            optionA = itemView.findViewById(R.id.optionA);
+            optionB = itemView.findViewById(R.id.optionB);
+            optionC = itemView.findViewById(R.id.optionC);
+            optionD = itemView.findViewById(R.id.optionD);
+            feedbackText = itemView.findViewById(R.id.feedbackText);
             explanationText = itemView.findViewById(R.id.explanationText);
+        }
+
+        public void bind(Question question, int position) {
+            // Set question and options
+            questionText.setText((position + 1) + ". " + question.getQuestion());
+            optionA.setText(question.getOptionA());
+            optionB.setText(question.getOptionB());
+            optionC.setText(question.getOptionC());
+            optionD.setText(question.getOptionD());
+
+            // Reset UI
+            radioGroup.clearCheck();
+            feedbackText.setText("");
+            explanationText.setText("");
+            explanationText.setVisibility(View.GONE);
+            optionA.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            optionB.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            optionC.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            optionD.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            itemView.setBackgroundColor(itemView.getContext().getResources().getColor(android.R.color.white)); // Reset background
+            isAnswerSelected = question.hasBeenAnswered();
+
+            // Restore the selected answer if the question has been answered
+            if (question.hasBeenAnswered()) {
+                String selectedAnswer = question.getSelectedAnswer();
+                if (selectedAnswer != null) {
+                    switch (selectedAnswer) {
+                        case "A":
+                            radioGroup.check(R.id.optionA);
+                            break;
+                        case "B":
+                            radioGroup.check(R.id.optionB);
+                            break;
+                        case "C":
+                            radioGroup.check(R.id.optionC);
+                            break;
+                        case "D":
+                            radioGroup.check(R.id.optionD);
+                            break;
+                    }
+                    showFeedbackAndExplanation(question, selectedAnswer);
+                }
+            }
+
+            // Set listener for option selection
+            radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+                if (checkedId != -1 && !isAnswerSelected) {
+                    isAnswerSelected = true;
+                    String selectedAnswer = "";
+                    RadioButton selectedRadioButton = itemView.findViewById(checkedId);
+                    if (selectedRadioButton == optionA) selectedAnswer = "A";
+                    else if (selectedRadioButton == optionB) selectedAnswer = "B";
+                    else if (selectedRadioButton == optionC) selectedAnswer = "C";
+                    else if (selectedRadioButton == optionD) selectedAnswer = "D";
+
+                    // Save the selected answer
+                    question.setSelectedAnswer(selectedAnswer);
+
+                    // Show feedback and explanation
+                    showFeedbackAndExplanation(question, selectedAnswer);
+                }
+            });
+        }
+
+        private void showFeedbackAndExplanation(Question question, String selectedAnswer) {
+            boolean isCorrect = selectedAnswer.equals(question.getCorrectAnswer());
+
+            // Set background color based on correctness
+            if (isCorrect) {
+                itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.light_green));
+                feedbackText.setText("Correct!");
+                feedbackText.setTextColor(itemView.getContext().getResources().getColor(android.R.color.holo_green_dark));
+                getSelectedRadioButton(selectedAnswer).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+            } else {
+                itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.light_red));
+                feedbackText.setText("Incorrect!");
+                feedbackText.setTextColor(itemView.getContext().getResources().getColor(android.R.color.holo_red_dark));
+                getSelectedRadioButton(selectedAnswer).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_cross, 0);
+
+                // Show the correct answer with a checkmark
+                if (question.getCorrectAnswer().equals("A")) {
+                    optionA.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                } else if (question.getCorrectAnswer().equals("B")) {
+                    optionB.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                } else if (question.getCorrectAnswer().equals("C")) {
+                    optionC.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                } else if (question.getCorrectAnswer().equals("D")) {
+                    optionD.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                }
+            }
+
+            // Show explanation
+            explanationText.setText("Explanation: " + question.getExplanation());
+            explanationText.setVisibility(View.VISIBLE);
+        }
+
+        private RadioButton getSelectedRadioButton(String selectedAnswer) {
+            switch (selectedAnswer) {
+                case "A":
+                    return optionA;
+                case "B":
+                    return optionB;
+                case "C":
+                    return optionC;
+                case "D":
+                    return optionD;
+                default:
+                    return null;
+            }
         }
     }
 }

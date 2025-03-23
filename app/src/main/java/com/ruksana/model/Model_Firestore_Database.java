@@ -2,14 +2,16 @@ package com.ruksana.model;
 
 public class Model_Firestore_Database {
 
-    String name,categoryForDetails;
+    String name,category,data,categoryQ;
 
     public Model_Firestore_Database() {
     }
 
-    public Model_Firestore_Database(String name, String categoryForDetails) {
+    public Model_Firestore_Database(String name, String category, String data, String categoryQ) {
         this.name = name;
-        this.categoryForDetails = categoryForDetails;
+        this.category = category;
+        this.data = data;
+        this.categoryQ = categoryQ;
     }
 
     public String getName() {
@@ -20,11 +22,27 @@ public class Model_Firestore_Database {
         this.name = name;
     }
 
-    public String getCategoryForDetails() {
-        return categoryForDetails;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoryForDetails(String categoryForDetails) {
-        this.categoryForDetails = categoryForDetails;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getCategoryQ() {
+        return categoryQ;
+    }
+
+    public void setCategoryQ(String categoryQ) {
+        this.categoryQ = categoryQ;
     }
 }

@@ -40,19 +40,19 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
         // Set up horizontal RecyclerView
         HorizontalAdapter horizontalAdapter = new HorizontalAdapter(verticalItem.getHorizontalItems(), context);
 
-        // Create a LinearLayoutManager and set reverseLayout to true
+        // Create a LinearLayoutManager for left-to-right layout
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
                 holder.itemView.getContext(),
                 LinearLayoutManager.HORIZONTAL,
-                false // layout in normal order (left to right)
+                false // Normal order (left to right)
         );
-        horizontalLayoutManager.setReverseLayout(true); // Reverse the order of items
+        // Removed setReverseLayout(true) to keep left-to-right order
 
         holder.rvHorizontal.setLayoutManager(horizontalLayoutManager);
         holder.rvHorizontal.setAdapter(horizontalAdapter);
 
-        // Scroll to the end (start from the last item)
-        holder.rvHorizontal.smoothScrollToPosition(verticalItem.getHorizontalItems().size() - 1);
+        // Optional: Scroll to the first item (leftmost) - not needed for left-to-right as it's the default
+        // holder.rvHorizontal.smoothScrollToPosition(0); // Uncomment if you want to ensure it starts at the beginning
     }
 
     @Override
