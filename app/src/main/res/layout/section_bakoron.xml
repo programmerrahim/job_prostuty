@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_off_white"
+    android:orientation="vertical">
+
+    <!-- Toggle Button -->
+    <LinearLayout
+        android:id="@+id/bakoron_toggle_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toggle_button_height"
+        android:background="@drawable/gradient_background"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding"
+        android:weightSum="3">
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/text_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bakoron"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/bakoron_toggle_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:src="@drawable/right_arrow" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Collapsible View -->
+    <LinearLayout
+        android:id="@+id/bakoron_collapsible_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:padding="@dimen/default_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+           >
+
+            <Button
+                android:id="@+id/bakoron_board_book_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/button_margin"
+                android:background="@drawable/background_gradiant"
+                android:text="@string/excercise"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text_size" />
+
+            <Button
+                android:id="@+id/bakoron_guide_book_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="@dimen/button_margin"
+                android:background="@drawable/background_gradiant"
+                android:text="@string/guide_book"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text_size" />
+
+            <Button
+                android:id="@+id/bakoron_hand_note_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/button_margin"
+                android:background="@drawable/background_gradiant"
+                android:text="@string/hand_note"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

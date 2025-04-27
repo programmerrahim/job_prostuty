@@ -5,7 +5,7 @@
     <dimen name="toggle_button_height">64dp</dimen>
     <dimen name="large_text_size">21sp</dimen>
     <dimen name="medium_text_size">18sp</dimen>
-    <dimen name="small_text_size">12sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="button_margin">4dp</dimen>
 </resources>

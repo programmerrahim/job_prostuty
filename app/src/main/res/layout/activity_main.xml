@@ -42,58 +42,87 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                >
 
-                <!-- Join Free Course Card -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="8dp">
+<!--                &lt;!&ndash; Join Free Course Card &ndash;&gt;-->
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="16dp"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:cardCornerRadius="8dp">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="8dp"
-                        android:background="@color/off_green"
-                        android:gravity="center_vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:background="@color/off_green"-->
+<!--                        android:gravity="center_vertical">-->
 
-                        <TextView
-                            android:id="@+id/joinTextId"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="Join Free Course"
-                            android:textSize="15sp"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="center"
-                            android:padding="8dp"/>
+<!--                        <TextView-->
+<!--                            android:id="@+id/joinTextId"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="2"-->
+<!--                            android:text="Join Free Course"-->
+<!--                            android:textSize="15sp"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:fontFamily="@font/poppins_regular"-->
+<!--                            android:gravity="center"-->
+<!--                            android:padding="8dp"/>-->
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/joinButtonId"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Join"
-                            android:textSize="15sp"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/poppins_regular"
-                            app:cornerRadius="4dp"
-                            style="@style/Widget.MaterialComponents.Button"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+<!--                        <com.google.android.material.button.MaterialButton-->
+<!--                            android:id="@+id/joinButtonId"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:text="Join"-->
+<!--                            android:textSize="15sp"-->
+<!--                            android:textAllCaps="false"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:fontFamily="@font/poppins_regular"-->
+<!--                            app:cornerRadius="4dp"-->
+<!--                            style="@style/Widget.MaterialComponents.Button"/>-->
+<!--                    </LinearLayout>-->
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
                 <!-- RecyclerView -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvVertical"
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/rvVertical"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:nestedScrollingEnabled="true"/>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/off_green"
+                android:orientation="vertical"
+                android:padding="@dimen/default_padding">
+
+                <!-- Bangla Sahitto Section -->
+                <include
+                    layout="@layout/section_bangla_sahitto"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:nestedScrollingEnabled="true"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/section_margin" />
+
+                <!-- Sohopath Section -->
+                <include
+                    layout="@layout/section_sohopath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/section_margin" />
+
+                <!-- Bakoron Section -->
+                <include
+                    layout="@layout/section_bakoron"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/section_margin" />
+            </LinearLayout>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

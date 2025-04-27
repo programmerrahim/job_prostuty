@@ -19,4 +19,12 @@
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="vertical_title">Vertical Title</string>
+
+    <string name="hand_note">হ্যান্ড নোট</string>
+    <string name="guide_book">গাইড বই</string>
+    <string name="excercise">অনুশীলন করুন</string>
+    <string name="sahitto">বাংলা সাহিত্য</string>
+    <string name="bakoron">বাংলা ভাষার ব্যাকরণ ও নির্মিতি</string>
+    <string name="sohopath">বাংলা সহপাঠ</string>
+
 </resources>
